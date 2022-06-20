@@ -1,5 +1,10 @@
 In this file some of the definition and explanations of react hooks and components 
 
+## helpfull documentation for react applications
+ou can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
 # intrinsic elements in React
 For React, intrinsic elements are emitted as strings (React.createElement("div")), whereas a component you’ve created is not (React.createElement(MyComponent)).
 
