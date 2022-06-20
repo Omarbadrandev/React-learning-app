@@ -24,6 +24,7 @@ helpfull documentation and tutorials:
 https://www.w3schools.com/react/react_usecontext.asp
 https://reactjs.org/docs/hooks-reference.html#usecontext
 https://www.youtube.com/watch?v=5LrDIWkK_Bc&ab_channel=WebDevSimplified
+https://www.youtube.com/watch?v=OseG8oQ2RDM&list=PLNqp92_EXZBJYFrpEzdO2EapvU0GOJ09n&index=29
 
 # Custom hooks
 Custom Hooks are a mechanism to reuse stateful logic (such as setting up a subscription and remembering the current value), but every time you use a custom Hook, all state and effects inside of it are fully isolated. How does a custom Hook get isolated state? Each call to a Hook gets isolated state.
