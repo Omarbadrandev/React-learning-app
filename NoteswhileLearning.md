@@ -76,3 +76,44 @@ webpack also offer the functionality of minifying the code
 to get the webpack the easiest and the most common way is to use the npm "node package manager" which is the defective package manager for front-end and for managing all the dependencies 
 
 bundle all the files together 
+
+# Global state 
+React-use Library
+https://www.npmjs.com/package/react-use
+
+this library could be used for alot of hooks for example: 
+Globalstate
+
+this is not used in this project but it is documented for future use
+
+https://www.youtube.com/watch?v=VAIR7cRBlFw&list=PLNqp92_EXZBJYFrpEzdO2EapvU0GOJ09n&index=30
+
+# Redux and  Redux Toolkit 
+
+* What is Redux ? 
+
+- Redux is an open-source JavaScript library for managing and centralizing application state. It is most commonly used with libraries such as React or Angular for building user interfaces. Similar to Facebook's Flux architecture, it was created by Dan Abramov and Andrew Clark
+
+* What is Redux in React?
+
+As the official Redux binding for React, React Redux is kept up-to-date with any API changes from either library, to ensure that your React components behave as expected. Its intended usage adopts the design principles of React - writing declarative components.
+
+* What is Redux Toolkit?
+
+- Redux Toolkit is an official, opinionated, batteries-included toolset for efficient Redux development. It is intended to be the standard way to write Redux logic.
+
+# NPM
+npm install @reduxjs/toolkit
+
+# Yarn
+yarn add @reduxjs/toolkit
+
+helpfull tutorial and documentation: 
+https://www.youtube.com/watch?v=eFh2Kr9hfyo&list=PLNqp92_EXZBJYFrpEzdO2EapvU0GOJ09n&index=30&ab_channel=JackHerrington
+https://react-redux.js.org/introduction/getting-started
+
+template-redux-typescript
+https://github.com/reduxjs/cra-template-redux-typescript
+
+why to use React-Redux ?
+https://react-redux.js.org/introduction/why-use-react-redux
