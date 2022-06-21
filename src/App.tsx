@@ -5,17 +5,19 @@ import { Heading } from "./components/Heading";
 import { Incrementer } from "./components/Incrementer";
 import { InputGroup } from "./components/InputGroup";
 import { UL } from "./components/UnorderedList";
-import {
-  useTodos,
-  useRemoveTodo,
-  useAddTodo,
-  TodosProvider
-} from "./hooks/useTodos";
+import { Provider, useSelector, useDispatch } from "react-redux";
+import store, { selectTodos, addTodo, removeTodo } from "./store";
+import useTodos from "./hooks/useTodosWithZustand";
 
 function App() {
-  const todos = useTodos();
-  const addTodo = useAddTodo();
-  const removeTodo = useRemoveTodo();
+  // use selector was used during the usage of redux
+  // const todos = useSelector(selectTodos);
+  // const dispatch = useDispatch();
+  // those can be used while using the custom hook for todos
+  // const addTodo = useAddTodo();
+  // const removeTodo = useRemoveTodo();
+  
+  const { todos, removeTodo, addTodo } = useTodos((state) => state);
 
   const [value, setValue] = useState(0);
 
@@ -24,6 +26,7 @@ function App() {
   const onAddTodo = useCallback(() => {
     if (newTodoRef.current) {
       addTodo(newTodoRef.current.value);
+      // dispatch();
       newTodoRef.current.value = "";
     }
   }, [addTodo]);
@@ -48,8 +51,9 @@ function App() {
     </div>
   );
 }
+
 const JustShowTodos = () => {
-  const todos = useTodos();
+  const todos = useTodos((state) => state.todos);
   return (
     <UL
       itemClick={() => {}}
@@ -58,25 +62,13 @@ const JustShowTodos = () => {
     />
   );
 };
-const AppWrapper = () => (
-  <TodosProvider
-    initialTodos={[
-      {
-        id: 0,
-        text: "Hey there useContext",
-        done: false
-      }
-    ]}
-  >
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "50% 50%"
-      }}
-    >
-      <App></App>
+
+const AppGenralWrapper = () => (
+  <div style={{ display: "grid", gridTemplateColumns: "50% 50%" }}>
+    <Provider store={store}>
+      <App />
       <JustShowTodos />
-    </div>
-  </TodosProvider>
+    </Provider>
+  </div>
 );
-export default AppWrapper;
+export default AppGenralWrapper;
