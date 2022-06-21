@@ -132,4 +132,26 @@ sometimes  "noImplicitAny": is defined as false in the ts config to ignore the a
 
 # ZUSTAND 
 https://zustand.surge.sh/
-State Manager
+https://www.npmjs.com/package/zustand
+
+
+"copied from https://www.npmjs.com/package/zustand"
+A small, fast and scalable bearbones state-management solution using simplified flux principles. Has a comfy api based on hooks, isn't boilerplatey or opinionated.
+
+Don't disregard it because it's cute. It has quite the claws, lots of time was spent to deal with common pitfalls, like the dreaded zombie child problem, react concurrency, and context loss between mixed renderers. It may be the one state-manager in the React space that gets all of these right.
+
+# X-State
+
+XState can be used with React to: Coordinate local state. Manage global state performantly. Consume data from other hooks.
+
+# MonoRepo
+
+In version control systems, a monorepo ("mono" meaning 'single' and "repo" being short for 'repository') is a software development strategy where code for many projects is stored in the same repository.
+
+helpfull tutorial:
+https://www.youtube.com/watch?v=Bw_tmWEaaIU&list=PLNqp92_EXZBJYFrpEzdO2EapvU0GOJ09n&index=35&ab_channel=JackHerrington
+
+
+
+
+

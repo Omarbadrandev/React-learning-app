@@ -7,14 +7,17 @@ import { InputGroup } from "./components/InputGroup";
 import { UL } from "./components/UnorderedList";
 import { Provider, useSelector, useDispatch } from "react-redux";
 import store, { selectTodos, addTodo, removeTodo } from "./store";
-import { useTodos, useRemoveTodo, TodosProvider } from "./hooks/useTodos";
+import useTodos from "./hooks/useTodosWithZustand";
 
 function App() {
-  const todos = useSelector(selectTodos);
-  const dispatch = useDispatch();
+  // use selector was used during the usage of redux
+  // const todos = useSelector(selectTodos);
+  // const dispatch = useDispatch();
   // those can be used while using the custom hook for todos
   // const addTodo = useAddTodo();
   // const removeTodo = useRemoveTodo();
+  
+  const { todos, removeTodo, addTodo } = useTodos((state) => state);
 
   const [value, setValue] = useState(0);
 
@@ -22,10 +25,11 @@ function App() {
 
   const onAddTodo = useCallback(() => {
     if (newTodoRef.current) {
-      dispatch(addTodo(newTodoRef.current.value));
+      addTodo(newTodoRef.current.value);
+      // dispatch();
       newTodoRef.current.value = "";
     }
-  }, [dispatch]);
+  }, [addTodo]);
 
   return (
     <div className="App">
@@ -38,9 +42,7 @@ function App() {
         render={(todo) => (
           <>
             {todo.text}
-            <button onClick={() => dispatch(removeTodo(todo.id))}>
-              Remove
-            </button>
+            <button onClick={() => removeTodo(todo.id)}>Remove</button>
           </>
         )}
       />
@@ -49,8 +51,9 @@ function App() {
     </div>
   );
 }
+
 const JustShowTodos = () => {
-  const todos = useSelector(selectTodos);
+  const todos = useTodos((state) => state.todos);
   return (
     <UL
       itemClick={() => {}}
@@ -59,27 +62,6 @@ const JustShowTodos = () => {
     />
   );
 };
-// const AppWrapper = () => (
-//   <TodosProvider
-//     initialTodos={[
-//       {
-//         id: 0,
-//         text: "Hey there useContext",
-//         done: false
-//       }
-//     ]}
-//   >
-//     <div
-//       style={{
-//         display: "grid",
-//         gridTemplateColumns: "50% 50%"
-//       }}
-//     >
-//       <App></App>
-//       <JustShowTodos />
-//     </div>
-//   </TodosProvider>
-// );
 
 const AppGenralWrapper = () => (
   <div style={{ display: "grid", gridTemplateColumns: "50% 50%" }}>
