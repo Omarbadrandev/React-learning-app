@@ -49,6 +49,7 @@ so we have to lazy load the components and render some fallback for while compon
 usefull tutorial:
 https://www.youtube.com/watch?v=Ef3nvKLS4no
 https://tsh.io/blog/code-splitting-with-react-webpack-for-frontend-optimisation/
+https://www.youtube.com/watch?v=bb6RCrDaxhw&ab_channel=MetaDevelopers
 
 Benefits of using code splitting
 The most important code splitting benefits include:
@@ -117,3 +118,18 @@ https://github.com/reduxjs/cra-template-redux-typescript
 
 why to use React-Redux ?
 https://react-redux.js.org/introduction/why-use-react-redux
+
+
+- slices:
+
+A "slice" is a collection of Redux reducer logic and actions for a single feature in your app, typically defined together in a single file. The name comes from splitting up the root Redux state object into multiple "slices" of state
+
+# any 
+
+❌ Don’t use any as a type unless you are in the process of migrating a JavaScript project to TypeScript. The compiler effectively treats any as “please turn off type checking for this thing”. It is similar to putting an @ts-ignore comment around every usage of the variable
+
+sometimes  "noImplicitAny": is defined as false in the ts config to ignore the any warning but this is not recommended at all as defining any type has alot of negative issues as mentioned above.
+
+# ZUSTAND 
+https://zustand.surge.sh/
+State Manager

@@ -5,17 +5,16 @@ import { Heading } from "./components/Heading";
 import { Incrementer } from "./components/Incrementer";
 import { InputGroup } from "./components/InputGroup";
 import { UL } from "./components/UnorderedList";
-import {
-  useTodos,
-  useRemoveTodo,
-  useAddTodo,
-  TodosProvider
-} from "./hooks/useTodos";
+import { Provider, useSelector, useDispatch } from "react-redux";
+import store, { selectTodos, addTodo, removeTodo } from "./store";
+import { useTodos, useRemoveTodo, TodosProvider } from "./hooks/useTodos";
 
 function App() {
-  const todos = useTodos();
-  const addTodo = useAddTodo();
-  const removeTodo = useRemoveTodo();
+  const todos = useSelector(selectTodos);
+  const dispatch = useDispatch();
+  // those can be used while using the custom hook for todos
+  // const addTodo = useAddTodo();
+  // const removeTodo = useRemoveTodo();
 
   const [value, setValue] = useState(0);
 
@@ -23,10 +22,10 @@ function App() {
 
   const onAddTodo = useCallback(() => {
     if (newTodoRef.current) {
-      addTodo(newTodoRef.current.value);
+      dispatch(addTodo(newTodoRef.current.value));
       newTodoRef.current.value = "";
     }
-  }, [addTodo]);
+  }, [dispatch]);
 
   return (
     <div className="App">
@@ -39,7 +38,9 @@ function App() {
         render={(todo) => (
           <>
             {todo.text}
-            <button onClick={() => removeTodo(todo.id)}>Remove</button>
+            <button onClick={() => dispatch(removeTodo(todo.id))}>
+              Remove
+            </button>
           </>
         )}
       />
@@ -49,7 +50,7 @@ function App() {
   );
 }
 const JustShowTodos = () => {
-  const todos = useTodos();
+  const todos = useSelector(selectTodos);
   return (
     <UL
       itemClick={() => {}}
@@ -58,25 +59,34 @@ const JustShowTodos = () => {
     />
   );
 };
-const AppWrapper = () => (
-  <TodosProvider
-    initialTodos={[
-      {
-        id: 0,
-        text: "Hey there useContext",
-        done: false
-      }
-    ]}
-  >
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "50% 50%"
-      }}
-    >
-      <App></App>
+// const AppWrapper = () => (
+//   <TodosProvider
+//     initialTodos={[
+//       {
+//         id: 0,
+//         text: "Hey there useContext",
+//         done: false
+//       }
+//     ]}
+//   >
+//     <div
+//       style={{
+//         display: "grid",
+//         gridTemplateColumns: "50% 50%"
+//       }}
+//     >
+//       <App></App>
+//       <JustShowTodos />
+//     </div>
+//   </TodosProvider>
+// );
+
+const AppGenralWrapper = () => (
+  <div style={{ display: "grid", gridTemplateColumns: "50% 50%" }}>
+    <Provider store={store}>
+      <App />
       <JustShowTodos />
-    </div>
-  </TodosProvider>
+    </Provider>
+  </div>
 );
-export default AppWrapper;
+export default AppGenralWrapper;
